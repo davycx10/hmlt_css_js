@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu de devinette</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <script>
+        // Générer un nombre aléatoire entre 1 et 100
+        const numeroSecret = Math.floor(Math.random() * 100) + 1;
+        let tentatives = 5;
+
+        function checkGuess() {
+            // Récupérer la valeur saisie par l'utilisateur
+            const valeur_utilisateur = parseInt(document.getElementById('devnb').value);
+
+            // Vérifier si la valeur est valide
+            if (isNaN(valeurUtilisateur) || valeurUtilisateur < 1 || valeurUtilisateur > 100) {
+                alert('Veuillez entrer un nombre valide entre 1 et 100.');
+                return;
+            }
+
+            // Réduire le nombre de tentatives restantes
+            tentatives--;
+
+            // Afficher les tentatives restantes
+            document.getElementById('attempts').textContent = `Tentatives restantes : ${tentatives}`;
+
+            // Vérifier si le nombre est correct
+            if (userGuess === secretNumber) {
+                displayOutcome(true);
+            } else {
+                // Afficher un indice si ce n'est pas le bon nombre
+                let message = valeurUtilisateur < secretNumber ? "C'est plus grand !" : "C'est plus petit !";
+                document.getElementById('retour').textContent = message;
+
+                // Si le joueur a épuisé ses tentatives
+                if (tentatives === 0) {
+                    displayOutcome(false);
+                }
+            }
+
+            // Effacer le champ de saisie après chaque tentative
+            document.getElementById('guessInput').value = '';
+        }
+
+        function displayOutcome(isWinner) {
+            if (isWinner) {
+                document.getElementById('result').textContent = "Félicitations ! Vous avez deviné le bon nombre.";
+            } else {
+                document.getElementById('result').textContent = `Dommage ! Le nombre secret était ${numeroSecret}.`;
+            }
+
+            // Désactiver le champ de saisie et le bouton après la fin du jeu
+            document.getElementById('guessInput').disabled = true;
+            document.querySelector('button').disabled = true;
+        }
+
+    </script>
+
+
+
+    <div class="container">
+        <h1>Jeu de devinette</h1>
+        <p>Devinez un nombre entre 1 et 100 :</p>
+        <input type="text" id="devnb" min="1" max="100">
+        <button onclick="checkGuess()">Valider</button>
+        <div id="instructions">Entrez un nombre et cliquez sur Valider.</div>
+        <div id="retour"></div>
+        <div id="attempts"></div>
+        <div id="result"></div>
+    </div>
+</body>
+
+</html>

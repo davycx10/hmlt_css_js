@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function multplication() {
+            let nb1 = document.getElementById('nombre1').value;
+            let nb2 = document.getElementById('nombre2').value;
+            let mul = nb1 * nb2;
+            document.getElementById('0').innerHTML = mul;
+        }
+
+
+        function division() {
+            let nb1 = document.getElementById('nombre1').value;
+            let nb2 = document.getElementById('nombre2').value;
+            let divi = nb1 / nb2;
+            document.getElementById('0').innerHTML = divi;
+        }
+
+    </script>
+    <form action="">
+
+        <label for="nombre1">1er Numéro :</label>
+        <input type="text" id="nombre1"><br><br>
+
+        <label for="nombre2">2e Numéro :</label>
+        <input type="text" id="nombre2"><br><br>
+
+        <button type="button" onclick="multplication()"> multplication</button>
+        <button type="button" onclick="division()"> division</button> <br>
+
+        <p> Le résultat est :</p>
+        <textarea id="0"></textarea>
+
+
+    </form>
+
+
+
+
+</body>
+
+</html>
