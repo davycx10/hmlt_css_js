@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url(IMG_4867.jpg) no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    color: #ff0000;
+    text-align: bottom;
+    padding: 90px 0;
+    margin-top: auto;
+    padding-left: 19px;
+}
+
+p {
+    color: crimson;
+  font-size: 60px;
+}
+
+a {
+    color: #3202df;
+    margin: 0 10px;
+    text-decoration: none;
+    opacity: 0.5;
+}
