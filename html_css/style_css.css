@@ -1,4 +1,4 @@
-body {
+ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -19,9 +19,28 @@ p {
   font-size: 60px;
 }
 
+/*
 a {
     color: #3202df;
     margin: 0 10px;
     text-decoration: none;
     opacity: 0.5;
+} */
+
+nav.menu_nav ul li {
+    list-style-type: none;
+    display: inline-block;
+}
+
+nav.menu_nav ul li a {
+    color: #f7f7f7;
+    text-decoration: none;
+    background-color: crimson;
+
+}
+
+nav.menu_nav ul li a:hover {
+    background-color: #f7f7f7;
+    color: crimson;
+    transition: 0.5s all   ;
 }
