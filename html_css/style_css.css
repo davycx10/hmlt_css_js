@@ -1,4 +1,5 @@
- body {
+/* css pour controler le fond de la page  */
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -6,6 +7,7 @@
     background-size: cover;
 }
 
+/* met le h1 en rouge */
 h1 {
     color: #ff0000;
     text-align: bottom;
@@ -14,6 +16,7 @@ h1 {
     padding-left: 19px;
 }
 
+/* met les paragraphe en rouge  */
 p {
     color: crimson;
   font-size: 60px;
@@ -27,10 +30,12 @@ a {
     opacity: 0.5;
 } */
 
+/* genre le style du menu de navigation */
 nav.menu_nav ul li {
     list-style-type: none;
     display: inline-block;
 }
+
 
 nav.menu_nav ul li a {
     color: #f7f7f7;
