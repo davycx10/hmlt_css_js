@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML and PHP Example</title>
+</head>
+<body>
+    <nav class="menu_nav">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="page1.html" target="_blank">actualité</a></li>
+            <li><a href="page2.html" target="_blank">contact</a></li>
+
+        </ul>
+    </nav>
+
+    <!-- corps de  la page  -->
+    <h1> Hi :) </h1>
+
+    <p class="wel">
+        bienvenue sur mon site
+
+    <h1>Welcome to HTML and PHP Example</h1>
+    <p>This is a simple HTML page with embedded PHP.</p>
+    <?php
+        echo "<p>Hello from PHP!</p>";
+    ?>
+</body>
+</html>

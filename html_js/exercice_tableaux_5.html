@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let semaine = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"];
+    let weekend = ["Samedi", "Dimanche"];
+    let enfant = ["Mercredi"];
+    let choose_day = prompt("entrer un jour");
+    while (choose_day != "sortir") {
+        let found = false;
+        for (let i = 0; i < semaine.length; i++) {
+            if (semaine[i] == choose_day) {
+                console.log(choose_day + " est un jour de semaine");
+                found = true;
+                break;
+            }
+        }
+        for (let i = 0; i < weekend.length; i++) {
+            if (weekend[i] == choose_day) {
+                console.log(choose_day + " est un jour de weekend");
+                found = true;
+                break;
+            }
+        }
+        for (let i = 0; i < enfant.length; i++) {
+            if (enfant[i] == choose_day) {
+                console.log(choose_day + " est un jour d'enfant");
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            console.log(choose_day + " n'est pas un jour valide");
+        }
+        choose_day = prompt("entrer un jour");
+    }
+
+
+
+
+
+
+    </script>
+</body>
+</html>
