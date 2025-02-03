@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        class Teacher {
+            constructor(id, name, speciality) {
+                this.id = id;
+                this.name = name;
+                this.speciality = speciality;
+            }
+        }
+
+        class Student {
+            constructor(id, name, note = []) {
+                this.id = id;
+                this.name = name;
+        
+                this.note = note;
+            }
+
+        }
+
+        class Cours {
+            constructor(name, speciality, teacher) {
+                this.name = name;
+                this.speciality = speciality;
+                this.teacher = teacher;
+            }
+        }
+
+        class School {
+            constructor() {
+                this.StudentList = []; // liste d'étudiant vide
+                this.TeacherList = []; // liste d'enseignant vide
+                this.Courslist = [];   // liste de cours vide
+            }
+
+            addStudent(id, name, note) {
+                const newStudent = new Student(id, name, note); // creation de l'étudiant
+                this.StudentList.push(newStudent); // ajout de l'étudiant à la liste
+            }
+
+            addTeacher(id, name, speciality) {
+                const newTeacher = new Teacher(id, name, speciality); // creation de l'enseignant
+                this.TeacherList.push(newTeacher); // ajout de l'enseignant à la liste
+            }
+
+            addCours(name, speciality, teacher) {
+                const newCours = new Cours(name, speciality, teacher); // creation du cours
+                this.Courslist.push(newCours); // ajout du cours à la liste    
+            }
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>
+
+startx = 1069 starty = 1094
+endx = 917 endy = 1094

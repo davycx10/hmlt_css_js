@@ -6,75 +6,30 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Jeu de Devinette</h1>
-    <p>Devinez un nombre entre 1 et 100 :</p>
-    <input type="number" id="guessField" />
-    <button onclick="checkGuess()">Deviner</button>
-    <p id="result"></p>
-
     <script>
-        const randomNumber = Math.floor(Math.random() * 100) + 1;
-        let attempts = 0;
+        function devinerNombre() {
+            let proposition = parseInt(prompt("Devinez le nombre entre 1 et 100:"));
+            tentativesRestantes--;
 
-        function checkGuess() {
-            const userGuess = document.getElementById('guessField').value;
-            attempts++;
-            let result = '';
-
-            if (userGuess == randomNumber) {
-                result = `Félicitations ! Vous avez deviné le nombre en ${attempts} tentatives.`;
-            } else if (userGuess < randomNumber) {
-                result = 'Trop bas ! Essayez encore.';
+            if (proposition === nombreMystere) {
+                document.getElementById("resultat").innerText = "Félicitations! Vous avez deviné le nombre mystère.";
+            } else if (tentativesRestantes > 0) {
+                if (proposition < nombreMystere) {
+                    document.getElementById("resultat").innerText = "Trop bas! Il vous reste " + tentativesRestantes + " tentatives.";
+                } else {
+                    document.getElementById("resultat").innerText = "Trop haut! Il vous reste " + tentativesRestantes + " tentatives.";
+                }
             } else {
-                result = 'Trop haut ! Essayez encore.';
+                document.getElementById("resultat").innerText = "Désolé, vous avez épuisé toutes vos tentatives. Le nombre mystère était " + nombreMystere + ".";
             }
-
-            document.getElementById('result').innerText = result;
         }
     </script>
 
+<h1>Jeu de Devinette</h1>
+<p>Devinez le nombre entre 1 et 100.</p>
+<button onclick="devinerNombre()">Deviner</button>
+<p id="resultat"></p>
 
 
-
-
-    <p id="lives">Vies restantes : 5</p>
-
-    <script>
-        let lives = 5;
-
-        function checkGuess() {
-            const userGuess = document.getElementById('guessField').value;
-            attempts++;
-            let result = '';
-
-            if (userGuess == randomNumber) {
-                result = `Félicitations ! Vous avez deviné le nombre en ${attempts} tentatives.`;
-                document.getElementById('guessField').disabled = true;
-                document.querySelector('button').disabled = true;
-            } else if (userGuess < randomNumber) {
-                result = 'Trop bas ! Essayez encore.';
-            } else {
-                result = 'Trop haut ! Essayez encore.';
-            }
-
-            lives--;
-            document.getElementById('lives').innerText = `Vies restantes : ${lives}`;
-
-            if (lives === 0 && userGuess != randomNumber) {
-                result = `Désolé, vous avez perdu. Le nombre était ${randomNumber}.`;
-                document.getElementById('guessField').disabled = true;
-                document.querySelector('button').disabled = true;
-            }
-
-            document.getElementById('result').innerText = result;
-        }
-    </script>
-
-
-
-
-
-
-
-</body>
+</body> 
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const cars = {
+            marques: "nissan",
+            model : "Skyline gt-r- spec (R34)",
+            annee : "2005",
+            color: "blue",
+            // demarrer function(){}
+            demarrer: function() {
+                console.log("la voiture démarre");
+            }
+            
+        };
+
+        console.log(cars); // afficher l'objet
+        console.log(`Marque : ${cars.marques}`); // afficher la marque
+        console.log(`Model : ${cars.model}`); // afficher le model
+        console.log(`Annee : ${cars.annee}`); // afficher l'annee
+        console.log(`Color : ${cars.color}`); // afficher la couleur
+
+
+// appel de la function
+        cars.demarrer();
+    </script>
+
+
+
+</body>
+</html>
