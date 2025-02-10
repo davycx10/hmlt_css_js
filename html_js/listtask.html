@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        class Task {
+            constructor(id, description, status = "à faire") {
+                this.id = id;
+                this.description = description;
+                this.status = status;
+                // this fait réference à l'objet en cours de création
+            }
+        }
+
+
+        class taskList {
+            constructor() {
+                this.list = [];  // liste des taches vide
+            }
+
+            addTask(description) {
+                const id = this.list.length + 1; // id de la tache
+                const newTask = new Task(id, description); // creation de la tache
+                this.list.push(newTask); // ajout de la tache à la liste
+
+            }
+
+            deleteTask(id) {
+                const index = this.list.findIndex(task => task.id === id);
+                if (index !== -1) {
+                    this.list.splice(index, 1); // suppression de la tache grace à l'index
+                } else {
+                    console.log("La tache n'existe pas");
+                }
+            }
+
+            miseAjourStatus(id, newStatus) {
+                const index = this.list.findIndex(task => task.id === id);
+                if (index !== -1) {
+                    this.list[index].status = newStatus; // mise à jour du status de la tache
+                } else {
+                    console.log("La tache n'existe pas");
+                }
+            }
+
+            afficherStatus(status) { 
+                const taskfiltrees = this.list.filter(task => task.status === status);
+                console.log(taskfiltrees);
+                if (taskfiltrees.length === 0) {
+                    console.log("Aucune tache avec ce status");
+                }
+            }
+        }
+
+        const liste = new taskList(); // creation d'une nouvelle liste de taches
+        liste.addTask("faire travail  "); // ajout d'une tache à la liste
+        liste.addTask("faire les courses "); // ajout d'une tache à la liste
+        liste.addTask("faire le menage "); // ajout d'une tache à la liste
+        liste.miseAjourStatus(2, "en cours"); // mise à jour du status de la tache avec l'id 1
+        liste.afficherStatus("en cours"); // affichage des taches avec le status "en cours"
+        console.log(liste); // affichage de la liste
+        liste.deleteTask(1); // suppression de la tache avec l'id 1
+         
+
+
+
+    </script>
+
+</body>
+
+</html>

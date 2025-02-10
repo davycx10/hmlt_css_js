@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function devinerNombre() {
+            let proposition = parseInt(prompt("Devinez le nombre entre 1 et 100:"));
+            tentativesRestantes--;
+
+            if (proposition === nombreMystere) {
+                document.getElementById("resultat").innerText = "Félicitations! Vous avez deviné le nombre mystère.";
+            } else if (tentativesRestantes > 0) {
+                if (proposition < nombreMystere) {
+                    document.getElementById("resultat").innerText = "Trop bas! Il vous reste " + tentativesRestantes + " tentatives.";
+                } else {
+                    document.getElementById("resultat").innerText = "Trop haut! Il vous reste " + tentativesRestantes + " tentatives.";
+                }
+            } else {
+                document.getElementById("resultat").innerText = "Désolé, vous avez épuisé toutes vos tentatives. Le nombre mystère était " + nombreMystere + ".";
+            }
+        }
+    </script>
+
+<h1>Jeu de Devinette</h1>
+<p>Devinez le nombre entre 1 et 100.</p>
+<button onclick="devinerNombre()">Deviner</button>
+<p id="resultat"></p>
+
+
+</body> 
+</html>

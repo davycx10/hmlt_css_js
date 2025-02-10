@@ -1,0 +1,51 @@
+/* css pour controler le fond de la page  */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url(IMG_4867.jpg) no-repeat;
+    background-size: cover;
+}
+
+/* met le h1 en rouge */
+h1 {
+    color: #ff0000;
+    text-align: bottom;
+    padding: 90px 0;
+    margin-top: auto;
+    padding-left: 19px;
+}
+
+/* met les paragraphe en rouge  */
+p {
+    color: crimson;
+  font-size: 60px;
+}
+
+/*
+a {
+    color: #3202df;
+    margin: 0 10px;
+    text-decoration: none;
+    opacity: 0.5;
+} */
+
+/* genre le style du menu de navigation */
+nav.menu_nav ul li {
+    list-style-type: none;
+    display: inline-block;
+}
+
+
+nav.menu_nav ul li a {
+    color: #f7f7f7;
+    text-decoration: none;
+    background-color: crimson;
+
+}
+
+nav.menu_nav ul li a:hover {
+    background-color: #f7f7f7;
+    color: crimson;
+    transition: 0.5s all   ;
+}
