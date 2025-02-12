@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de l'école</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+    <header>
+        <h1>Bienvenue sur le site de l'école</h1>
+    </header>
+    <main>
+        <section class="gestion-etudiants">
+            <h2>Gestion des Étudiants</h2>
+            <input type="text" placeholder="ID">
+            <input type="text" placeholder="Nom">
+            <button>Ajouter Étudiant</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Moyenne</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Claude</td>
+                        <td>15.67</td>
+                        <td>
+                            <button>Voir Moyenne</button>
+                            <button class="delete">Supprimer</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Sarah</td>
+                        <td>11.00</td>
+                        <td>
+                            <button>Voir Moyenne</button>
+                            <button class="delete">Supprimer</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="gestion-professeurs">
+            <h2>Gestion des Professeurs</h2>
+            <input type="text" placeholder="ID">
+            <input type="text" placeholder="Nom">
+            <input type="text" placeholder="Spécialité">
+            <button>Ajouter Professeur</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Spécialité</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mr. Legrand</td>
+                        <td>Mathématiques</td>
+                        <td><button class="delete">Supprimer</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Mme. Guichard</td>
+                        <td>Culture générale</td>
+                        <td><button class="delete">Supprimer</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="liste-cours">
+            <h2>Liste des Cours</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Spécialité</th>
+                        <th>Professeur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Maths</td>
+                        <td>Mathématiques</td>
+                        <td>Mr. Legrand</td>
+                    </tr>
+                    <tr>
+                        <td>Culture</td>
+                        <td>Culture générale</td>
+                        <td>Mme. Guichard</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

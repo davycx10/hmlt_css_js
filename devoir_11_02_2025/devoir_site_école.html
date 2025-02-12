@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site école</title>
+    <link rel="stylesheet" href="devoir_site_ecole.css">
+</head>
+
+<body>
+    <script>
+
+        // 1. Classe Etudiant
+        class Etudiant {
+            constructor(id, nom, notes = []) {
+                this.id = id;
+                this.nom = nom;
+                this.notes = notes; // Tableau de notes
+            }
+
+            // Calculer la moyenne des notes de l'étudiant
+            calculerMoyenne() {
+                nombreDeNotes = this.notes.length;
+                if (nombreDeNotes === 0) return 0;
+                let somme = 0;
+                this.notes.forEach(note => {
+                    somme += note;
+                });
+                return (somme / nombreDeNotes).toFixed(2);
+            }
+        }
+
+        // 2. Classe Professeur
+        class Professeur {
+            constructor(id, nom, specialite) {
+                this.id = id;
+                this.nom = nom;
+                this.specialite = specialite; // Spécialité du professeur
+            }
+        }
+
+        // 3. Classe Cours
+        class Cours {
+            constructor(nom, specialite) {
+                this.nom = nom; // Nom du cours
+                this.specialite = specialite; // Spécialité requise
+                this.professeur = null; // Professeur affecté (initialement null)
+            }
+
+            // Affecter un professeur au cours
+            affecterProfesseur(professeur) {
+                if (professeur.specialite === this.specialite) {
+                    this.professeur = professeur;
+                    console.log(`Le professeur ${professeur.nom} a été affecté au cours ${this.nom}.`);
+                } else {
+                    document.getElementById(`Le professeur ${professeur.nom} ne peut pas enseigner ce cours (spécialité incompatible).`);
+                }
+            }
+        }
+
+        // 4. Classe GestionEcole pour gérer les étudiants, professeurs et cours
+        class GestionEcole {
+            constructor() {
+                this.etudiants = []; //objet etudiants 
+                this.professeurs = []; //objet professeurs
+                this.cours = []; //objet cours
+            }
+
+            // Ajouter un étudiant
+            ajouterEtudiant(nom, id) {
+                const etudiant = new Etudiant(id, nom);
+                this.etudiants.push(etudiant);
+                console.log(`Etudiant ajouté : ${nom}`);
+                
+                
+            }
+
+            // Supprimer un étudiant
+            supprimerEtudiant(id) {
+                const index = this.etudiants.findIndex(e => e.id === id);
+                if (index !== -1) {
+                    this.etudiants.splice(index, 1);
+                    document.getElementById(`Etudiant avec l'ID ${id} supprimé.`);
+                } else {
+                    document.getElementById(`Etudiant avec l'ID ${id} non trouvé.`);
+                }
+            }
+
+            // Ajouter un professeur
+            ajouterProfesseur(nom, id, specialite) {
+                const professeur = new Professeur(id, nom, specialite);
+                this.professeurs.push(professeur);
+                getElementById(`Professeur ajouté : ${nom}`);
+            }
+
+            // Supprimer un professeur
+            supprimerProfesseur(id) {
+                const index = this.professeurs.findIndex(p => p.id === id);
+                if (index !== -1) {
+                    this.professeurs.splice(index, 1);
+                    document.getElementById(`Professeur avec l'ID ${id} supprimé.`);
+                } else {
+                    document.getElementById(`Professeur avec l'ID ${id} non trouvé.`);
+                }
+            }
+
+            // Calculer la moyenne des notes d'un étudiant
+            afficherMoyenneEtudiant(id) {
+                const etudiant = this.etudiants.find(e => e.id === id);
+                if (etudiant) {
+                    const moyenne = etudiant.calculerMoyenne();
+                    document.getElementById(`La moyenne de ${etudiant.nom} est ${moyenne}`);
+                } else {
+                    document.getElementById(`Etudiant avec l'ID ${id} non trouvé.`);
+                }
+            }
+
+            // Affecter un professeur à un cours
+            affecterProfesseurAuCours(coursNom, professeurId) {
+                const cours = this.cours.find(c => c.nom === coursNom);
+                const professeur = this.professeurs.find(p => p.id === professeurId);
+
+                if (cours && professeur) {
+                    cours.affecterProfesseur(professeur);
+                } else {
+                    document.getElementById(`Cours ou professeur non trouvé.`);
+                }
+            }
+
+            // Ajouter un cours
+            ajouterCours(nom, specialite) {
+                const cours = new Cours(nom, specialite);
+                this.cours.push(cours);
+                document.getElementById(`Cours ajouté : ${nom}`);
+            }
+
+            // Afficher la liste des étudiants
+            afficherEtudiants() {
+                console.log("Liste des étudiants:");
+                this.etudiants.forEach(e => console.log(`ID: ${e.id}, Nom: ${e.nom}`));
+            }
+
+            // Afficher la liste des professeurs
+            afficherProfesseurs() {
+                console.log("Liste des professeurs:");
+                this.professeurs.forEach(p => console.log(`ID: ${p.id}, Nom: ${p.nom}, Spécialité: ${p.specialite}`));
+            }
+        }
+
+        // utilisation
+        const gestionEcole = new GestionEcole();
+
+        // Ajouter des étudiants
+        gestionEcole.ajouterEtudiant("Claude", 1);
+        gestionEcole.ajouterEtudiant("Sarah", 2);
+
+        // Ajouter des professeurs
+        gestionEcole.ajouterProfesseur("Mr. Legrand", 1, "Mathématiques");
+        gestionEcole.ajouterProfesseur("Mme. Guichard", 2, "Culture générale");
+
+        // Ajouter des cours
+        gestionEcole.ajouterCours("Maths", "Mathématiques");
+        gestionEcole.ajouterCours("Culture", "Culture générale");
+
+        // Affecter des professeurs aux cours
+        gestionEcole.affecterProfesseurAuCours("Maths", 1); // Mr. Legrand peut enseigner les Mathématiques
+        gestionEcole.affecterProfesseurAuCours("Culture", 2); // Mme. Guichard peut enseigner l'Histoire
+
+        // Ajouter des notes aux étudiants
+        gestionEcole.etudiants[0].notes = [15, 18, 14]; //
+        gestionEcole.etudiants[1].notes = [12, 10, 11]; // 
+
+        // Afficher la moyenne des étudiants
+        gestionEcole.afficherMoyenneEtudiant(1); // 
+        gestionEcole.afficherMoyenneEtudiant(2); //
+
+        // Afficher la liste des étudiants et des professeurs
+        gestionEcole.afficherEtudiants();
+        gestionEcole.afficherProfesseurs();
+
+        // Supprimer un étudiant et un professeur
+        gestionEcole.supprimerEtudiant(2);
+        gestionEcole.supprimerProfesseur(1);
+
+    </script>
+
+    <header>
+        <h1>Bienvenue sur le site de l'école</h1>
+    </header>
+
+    <main>
+        <section class="gestion-etudiants">
+            <h2>Gestion des Étudiants</h2>
+            <input type="text" placeholder="ID">
+            <input type="text" placeholder="Nom">
+            <button id="ajouterEtudiant">Ajouter Étudiant</button>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Moyenne</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Claude</td>
+                        <td>15.67</td>
+                        <td>
+                            <button id="voir_moyenne">Voir Moyenne</button>
+                            <button id="supprimerEtudiant">Supprimer</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Sarah</td>
+                        <td>11.00</td>
+                        <td>
+                            <button>Voir Moyenne</button>
+                            <button id="supprimer_etudiant">Supprimer</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="gestion-professeurs">
+            <h2>Gestion des Professeurs</h2>
+            <input type="text" placeholder="ID">
+            <input type="text" placeholder="Nom">
+            <input type="text" placeholder="Spécialité">
+            <button id="ajouterProfesseur">Ajouter Professeur</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Spécialité</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mr. Legrand</td>
+                        <td>Mathématiques</td>
+                        <td><button class="delete">Supprimer</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Mme. Guichard</td>
+                        <td>Culture générale</td>
+                        <td><button>Supprimer</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="liste-cours">
+            <h2>Liste des Cours</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Spécialité</th>
+                        <th>Professeur</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Maths</td>
+                        <td>Mathématiques</td>
+                        <td>Mr. Legrand</td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Culture</td>
+                        <td>Culture générale</td>
+                        <td>Mme. Guichard</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+</body>
+
+</html>
